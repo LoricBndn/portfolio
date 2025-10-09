@@ -80,7 +80,7 @@ const translations: Record<Language, Record<string, string>> = {
 
     "projects.title": "Mes Projets",
     "projects.subtitle":
-      "Découvrez une sélection de mes réalisations en développement web",
+      "Découvrez une sélection de mes réalisations en développement web & mobile",
     "projects.github": "GitHub",
     "projects.demo": "Démo",
 
@@ -159,7 +159,7 @@ const translations: Record<Language, Record<string, string>> = {
     "home.performanceDesc": "Fast and optimized web applications",
 
     "projects.title": "My Projects",
-    "projects.subtitle": "Discover a selection of my web development work",
+    "projects.subtitle": "Discover a selection of my web & mobile development work",
     "projects.github": "GitHub",
     "projects.demo": "Demo",
 

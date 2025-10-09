@@ -47,7 +47,7 @@ export default function FormationPage() {
                     {formation.title[language]}
                   </h3>
                   <span className="text-sm font-medium text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">
-                    {formation.year}
+                    {formation.year[language]}
                   </span>
                 </div>
                 <p className="text-gray-600 dark:text-gray-400 font-medium mb-2">

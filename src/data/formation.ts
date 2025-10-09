@@ -1,6 +1,9 @@
 export interface Formation {
   id: number;
-  year: string;
+  year: {
+    fr: string;
+    en: string;
+  };
   title: {
     fr: string;
     en: string;
@@ -19,7 +22,10 @@ export interface Formation {
 export const formations: Formation[] = [
   {
     id: 1,
-    year: "2021 - 2023",
+    year: {
+      fr: "2021 - 2023",
+      en: "2021 - 2023",
+    },
     title: {
       fr: "Baccalauréat Général",
       en: "General Baccalaureate",
@@ -36,7 +42,10 @@ export const formations: Formation[] = [
   },
   {
     id: 2,
-    year: "2023 - 2026",
+    year: {
+      fr: "2023 - 2026",
+      en: "2023 - 2026",
+    },
     title: {
       fr: "BUT Informatique",
       en: "Bachelor of Computer Science (BUT)",
@@ -53,7 +62,10 @@ export const formations: Formation[] = [
   },
   {
     id: 3,
-    year: "Avril - Juin 2025",
+    year: {
+      fr: "Avril 2025 - Juin 2025",
+      en: "April 2025 - June 2025",
+    },
     title: {
       fr: "Stage Développeur Web",
       en: "Web Developer Internship",

@@ -27,14 +27,30 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (!res.ok) throw new Error("Erreur lors de l'envoi");
+
       toast({
         title: t("contact.success"),
         description: t("contact.successDesc"),
       });
+
       setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      toast({
+        title: "Erreur",
+        description: "Impossible d'envoyer le message. Réessaie plus tard.",
+        variant: "destructive",
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
@@ -65,7 +81,9 @@ export default function ContactPage() {
                   type="text"
                   placeholder={t("contact.namePlaceholder")}
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   required
                   className="mt-2"
                 />
@@ -78,7 +96,9 @@ export default function ContactPage() {
                   type="email"
                   placeholder={t("contact.emailPlaceholder")}
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   required
                   className="mt-2"
                 />
@@ -90,18 +110,16 @@ export default function ContactPage() {
                   id="message"
                   placeholder={t("contact.messagePlaceholder")}
                   value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, message: e.target.value })
+                  }
                   required
                   rows={6}
                   className="mt-2"
                 />
               </div>
 
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isSubmitting}
-              >
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? (
                   t("contact.sending")
                 ) : (
@@ -132,7 +150,9 @@ export default function ContactPage() {
                       <Mail className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white">Email</h3>
+                      <h3 className="font-semibold text-gray-900 dark:text-white">
+                        Email
+                      </h3>
                       <p className="text-gray-600 dark:text-gray-400 text-sm">
                         contact@loricbondon.fr
                       </p>
@@ -151,7 +171,9 @@ export default function ContactPage() {
                       <Github className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white">GitHub</h3>
+                      <h3 className="font-semibold text-gray-900 dark:text-white">
+                        GitHub
+                      </h3>
                       <p className="text-gray-600 dark:text-gray-400 text-sm">
                         @loricbndn
                       </p>
@@ -170,7 +192,9 @@ export default function ContactPage() {
                       <Linkedin className="h-6 w-6 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-900 dark:text-white">LinkedIn</h3>
+                      <h3 className="font-semibold text-gray-900 dark:text-white">
+                        LinkedIn
+                      </h3>
                       <p className="text-gray-600 dark:text-gray-400 text-sm">
                         {t("contact.linkedinDesc")}
                       </p>
@@ -181,10 +205,10 @@ export default function ContactPage() {
             </div>
 
             <Card className="p-6 bg-gradient-to-br from-blue-500 to-purple-600 text-white">
-              <h3 className="text-xl font-bold mb-2">{t("contact.available")}</h3>
-              <p className="text-blue-50">
-                {t("contact.availableDesc")}
-              </p>
+              <h3 className="text-xl font-bold mb-2">
+                {t("contact.available")}
+              </h3>
+              <p className="text-blue-50">{t("contact.availableDesc")}</p>
             </Card>
           </div>
         </AnimatedSection>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Moon, Sun, Languages } from "lucide-react";
+import { Moon, Sun, Languages, Menu, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
@@ -13,6 +13,7 @@ export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
   const [mounted, setMounted] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false); // 👈 état du burger
 
   useEffect(() => {
     setMounted(true);
@@ -31,11 +32,13 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-950/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
+          {/* Logo */}
           <Link href="/" className="text-xl font-bold text-gray-900 dark:text-white">
             Portfolio
           </Link>
 
-          <div className="hidden md:flex items-center space-x-1">
+          {/* Liens desktop */}
+          <div className="hidden lg:flex items-center space-x-1">
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -51,6 +54,7 @@ export default function Navbar() {
             ))}
           </div>
 
+          {/* Boutons à droite */}
           <div className="flex items-center gap-2">
             <Button
               variant="ghost"
@@ -66,32 +70,39 @@ export default function Navbar() {
                 </div>
               )}
             </Button>
+
+            {/* Bouton burger visible seulement sur mobile */}
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="rounded-lg"
+              className="lg:hidden"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
             >
-              {mounted && (theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />)}
+              {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
         </div>
 
-        <div className="md:hidden pb-4 flex flex-wrap gap-2">
-          {links.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`px-3 py-1.5 text-sm rounded-lg transition-colors ${
-                pathname === link.href
-                  ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
-                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
+        {/* Menu mobile */}
+        {menuOpen && (
+          <div className="lg:hidden flex flex-col space-y-2 pb-4 animate-fadeIn">
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setMenuOpen(false)} // ferme le menu au clic
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  pathname === link.href
+                    ? "bg-gray-900 text-white dark:bg-white dark:text-gray-900"
+                    : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        )}
       </div>
     </nav>
   );
