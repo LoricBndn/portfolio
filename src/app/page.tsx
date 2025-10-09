@@ -56,7 +56,7 @@ export default function Home() {
                 <Github className="h-6 w-6" />
               </Link>
               <Link
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/loric-bondon"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
@@ -64,7 +64,7 @@ export default function Home() {
                 <Linkedin className="h-6 w-6" />
               </Link>
               <Link
-                href="mailto:contact@example.com"
+                href="mailto:contact@loricbondon.fr"
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 <Mail className="h-6 w-6" />
