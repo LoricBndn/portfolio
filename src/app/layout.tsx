@@ -10,8 +10,18 @@ import { Toaster } from '@/components/ui/toaster';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Portfolio - Développeur Web',
-  description: 'Portfolio personnel de développeur web full-stack spécialisé en Next.js, React et TypeScript',
+  title: "Loric Bondon | Développeur Web Full-Stack",
+  description:
+    "Portfolio de Loric Bondon, développeur web full-stack passionné, spécialisé en Next.js, React, TypeScript et Flutter. Découvrez mes projets, compétences et expériences.",
+    keywords: [
+    "Loric Bondon",
+    "développeur web",
+    "Next.js",
+    "React",
+    "TypeScript",
+    "Flutter",
+    "portfolio",
+  ],
 };
 
 export default function RootLayout({

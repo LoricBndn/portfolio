@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 
 type Language = "fr" | "en";
 
@@ -10,7 +16,9 @@ interface LanguageContextType {
   t: (key: string) => string;
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined
+);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguage] = useState<Language>("fr");
@@ -32,7 +40,9 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage: changeLanguage, t }}>
+    <LanguageContext.Provider
+      value={{ language, setLanguage: changeLanguage, t }}
+    >
       {children}
     </LanguageContext.Provider>
   );
@@ -56,18 +66,21 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
 
     "home.title": "Développeur Web Full-Stack",
-    "home.subtitle": "Passionné par le développement web moderne, je crée des expériences digitales innovantes avec Next.js, React et TypeScript.",
+    "home.subtitle":
+      "Passionné par le développement web moderne, je crée des expériences digitales innovantes avec Next.js, React et TypeScript.",
     "home.viewProjects": "Voir mes projets",
     "home.contactMe": "Me contacter",
     "home.webDev": "Développement Web",
     "home.webDevDesc": "Création d'applications web modernes et performantes",
     "home.design": "Design UI/UX",
-    "home.designDesc": "Interfaces élégantes et expériences utilisateur optimales",
+    "home.designDesc":
+      "Interfaces élégantes et expériences utilisateur optimales",
     "home.performance": "Performance",
     "home.performanceDesc": "Applications rapides et optimisées pour le web",
 
     "projects.title": "Mes Projets",
-    "projects.subtitle": "Découvrez une sélection de mes réalisations en développement web",
+    "projects.subtitle":
+      "Découvrez une sélection de mes réalisations en développement web",
     "projects.github": "GitHub",
     "projects.demo": "Démo",
 
@@ -78,7 +91,8 @@ const translations: Record<Language, Record<string, string>> = {
     "education.subtitle": "Mon parcours académique et professionnel",
 
     "contact.title": "Contact",
-    "contact.subtitle": "Une question ou un projet ? N'hésitez pas à me contacter",
+    "contact.subtitle":
+      "Une question ou un projet ? N'hésitez pas à me contacter",
     "contact.sendMessage": "Envoyez-moi un message",
     "contact.name": "Nom",
     "contact.email": "Email",
@@ -87,7 +101,8 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.sending": "Envoi en cours...",
     "contact.otherMeans": "Autres moyens de contact",
     "contact.available": "Disponible pour des projets",
-    "contact.availableDesc": "Je suis actuellement ouvert aux opportunités de collaboration et aux nouveaux projets.",
+    "contact.availableDesc":
+      "Je suis actuellement ouvert aux opportunités de collaboration et aux nouveaux projets.",
     "contact.namePlaceholder": "Votre nom",
     "contact.emailPlaceholder": "votre@email.com",
     "contact.messagePlaceholder": "Votre message...",
@@ -96,20 +111,29 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.successDesc": "Je vous répondrai dans les plus brefs délais.",
 
     "about.title": "À propos de moi",
-    "about.subtitle": "Développeur passionné par les technologies web modernes",
-    "about.hello": "Bonjour !",
-    "about.p1": "Je suis un développeur web full-stack passionné par la création d'applications web modernes, performantes et élégantes. Mon parcours dans le développement web m'a permis de travailler sur des projets variés, allant de sites vitrines à des applications web complexes.",
-    "about.p2": "Spécialisé dans l'écosystème JavaScript/TypeScript, je maîtrise particulièrement React, Next.js et Node.js. J'aime créer des interfaces utilisateur intuitives et des expériences digitales fluides qui allient esthétique et performance.",
-    "about.p3": "Au-delà du code, je suis constamment en veille technologique pour découvrir et apprendre les dernières innovations du web. Je crois fermement à l'importance d'écrire un code propre, maintenable et bien documenté.",
-    "about.p4": "Actuellement en formation BTS SIO, je combine théorie et pratique pour développer mes compétences et contribuer à des projets ambitieux. Je suis toujours ouvert aux nouvelles opportunités et aux collaborations enrichissantes.",
+    "about.subtitle":
+      "Développeur web passionné par les technologies modernes et les projets concrets",
+    "about.hello": "Salut !",
+    "about.p1":
+      "Je suis étudiant en BUT Informatique et développeur web full-stack, passionné par la création d’expériences numériques modernes, performantes et intuitives. J’aime transformer des idées en projets concrets grâce à des technologies innovantes.",
+    "about.p2":
+      "Je travaille principalement avec Next.js, React, TypeScript et Flutter, en combinant créativité et rigueur technique pour concevoir des interfaces élégantes et dynamiques. Mon approche repose sur un code propre, maintenable et orienté utilisateur.",
+    "about.p3":
+      "Mon parcours m’a permis de contribuer à différents projets, comme la refonte de sites pour des associations sportives et le développement de solutions web complètes pendant mon stage chez Eagle Intuition. Ces expériences m’ont appris à gérer un projet de bout en bout, du design à la mise en production.",
+    "about.p4":
+      "Curieux et toujours en veille, j’aime découvrir de nouveaux outils, frameworks et bonnes pratiques pour améliorer mes compétences et la qualité de mes réalisations. Je suis ouvert à toute opportunité de collaboration stimulante dans le domaine du développement web.",
     "about.cleanCode": "Code Propre",
-    "about.cleanCodeDesc": "J'écris du code maintenable et respectant les meilleures pratiques",
+    "about.cleanCodeDesc":
+      "J’écris un code clair, structuré et maintenable sur le long terme",
     "about.performanceTitle": "Performance",
-    "about.performanceDesc": "Optimisation constante pour des applications rapides et efficaces",
+    "about.performanceDesc":
+      "J’optimise chaque détail pour offrir des applications rapides et fluides",
     "about.passion": "Passion",
-    "about.passionDesc": "Chaque projet est une opportunité d'apprendre et de créer",
+    "about.passionDesc":
+      "Chaque projet est pour moi une occasion d’apprendre, de créer et d’innover",
     "about.downloadCV": "Téléchargez mon CV",
-    "about.downloadCVDesc": "Découvrez mon parcours complet et mes expériences professionnelles",
+    "about.downloadCVDesc":
+      "Découvrez mon parcours, mes projets et mes expériences professionnelles",
     "about.downloadButton": "Télécharger le CV (PDF)",
 
     "footer.rights": "Tous droits réservés.",
@@ -123,7 +147,8 @@ const translations: Record<Language, Record<string, string>> = {
     "nav.contact": "Contact",
 
     "home.title": "Full-Stack Web Developer",
-    "home.subtitle": "Passionate about modern web development, I create innovative digital experiences with Next.js, React and TypeScript.",
+    "home.subtitle":
+      "Passionate about modern web development, I create innovative digital experiences with Next.js, React and TypeScript.",
     "home.viewProjects": "View my projects",
     "home.contactMe": "Contact me",
     "home.webDev": "Web Development",
@@ -154,7 +179,8 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.sending": "Sending...",
     "contact.otherMeans": "Other contact methods",
     "contact.available": "Available for projects",
-    "contact.availableDesc": "I'm currently open to collaboration opportunities and new projects.",
+    "contact.availableDesc":
+      "I'm currently open to collaboration opportunities and new projects.",
     "contact.namePlaceholder": "Your name",
     "contact.emailPlaceholder": "your@email.com",
     "contact.messagePlaceholder": "Your message...",
@@ -163,20 +189,29 @@ const translations: Record<Language, Record<string, string>> = {
     "contact.successDesc": "I'll get back to you as soon as possible.",
 
     "about.title": "About Me",
-    "about.subtitle": "Developer passionate about modern web technologies",
-    "about.hello": "Hello!",
-    "about.p1": "I'm a full-stack web developer passionate about creating modern, efficient and elegant web applications. My journey in web development has allowed me to work on various projects, ranging from showcase websites to complex web applications.",
-    "about.p2": "Specialized in the JavaScript/TypeScript ecosystem, I particularly master React, Next.js and Node.js. I love creating intuitive user interfaces and smooth digital experiences that combine aesthetics and performance.",
-    "about.p3": "Beyond coding, I'm constantly staying up-to-date with technology to discover and learn the latest web innovations. I firmly believe in the importance of writing clean, maintainable and well-documented code.",
-    "about.p4": "Currently studying for a BTS SIO degree, I combine theory and practice to develop my skills and contribute to ambitious projects. I'm always open to new opportunities and enriching collaborations.",
+    "about.subtitle":
+      "Web developer passionate about modern technologies and real-world projects",
+    "about.hello": "Hi!",
+    "about.p1":
+      "I'm a full-stack web developer and IT student passionate about building modern, high-performance and intuitive digital experiences. I love turning ideas into real projects using cutting-edge web technologies.",
+    "about.p2":
+      "I mainly work with Next.js, React, TypeScript and Flutter, combining creativity and technical precision to craft elegant and dynamic user interfaces. My development approach focuses on clean, maintainable and user-centered code.",
+    "about.p3":
+      "Throughout my journey, I've contributed to various projects such as redesigning websites for sports associations and developing complete web solutions during my internship at Eagle Intuition. These experiences taught me to manage a project from design to deployment.",
+    "about.p4":
+      "Curious and always learning, I keep up with the latest tools, frameworks and best practices to improve my skills and the quality of my work. I'm open to exciting collaboration opportunities in web development.",
     "about.cleanCode": "Clean Code",
-    "about.cleanCodeDesc": "I write maintainable code following best practices",
+    "about.cleanCodeDesc":
+      "I write structured, readable and maintainable code for long-term use",
     "about.performanceTitle": "Performance",
-    "about.performanceDesc": "Constant optimization for fast and efficient applications",
+    "about.performanceDesc":
+      "I focus on optimization to deliver fast and smooth web applications",
     "about.passion": "Passion",
-    "about.passionDesc": "Each project is an opportunity to learn and create",
+    "about.passionDesc":
+      "Each project is an opportunity to learn, create and innovate",
     "about.downloadCV": "Download my CV",
-    "about.downloadCVDesc": "Discover my complete background and professional experiences",
+    "about.downloadCVDesc":
+      "Discover my background, projects and professional experiences",
     "about.downloadButton": "Download CV (PDF)",
 
     "footer.rights": "All rights reserved.",
