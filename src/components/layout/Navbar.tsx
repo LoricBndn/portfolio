@@ -2,15 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Moon, Sun, Languages, Menu, X } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Languages, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Navbar() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
   const [mounted, setMounted] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false); // 👈 état du burger

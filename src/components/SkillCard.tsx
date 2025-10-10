@@ -11,7 +11,7 @@ interface SkillCardProps {
   index: number;
 }
 
-export default function SkillCard({ skill, index }: SkillCardProps) {
+export default function SkillCard({ skill, index }: Readonly<SkillCardProps>) {
   const { language } = useLanguage();
 
   return (

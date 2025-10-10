@@ -48,22 +48,25 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
+                id: 1,
                 icon: <Code2 className="h-6 w-6 text-white" />,
                 title: t("about.cleanCode"),
                 desc: t("about.cleanCodeDesc"),
               },
               {
+                id: 2,
                 icon: <Rocket className="h-6 w-6 text-white" />,
                 title: t("about.performanceTitle"),
                 desc: t("about.performanceDesc"),
               },
               {
+                id: 3,
                 icon: <Heart className="h-6 w-6 text-white" />,
                 title: t("about.passion"),
                 desc: t("about.passionDesc"),
               },
-            ].map((item, i) => (
-              <motion.div key={i} whileHover={{ scale: 1.05 }}>
+            ].map((item) => (
+              <motion.div key={item.id} whileHover={{ scale: 1.05 }}>
                 <Card className="p-6 text-center h-full">
                   <div className="w-12 h-12 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
                     {item.icon}

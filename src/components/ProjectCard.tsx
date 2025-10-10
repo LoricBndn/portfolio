@@ -14,7 +14,7 @@ interface ProjectCardProps {
   index: number;
 }
 
-export default function ProjectCard({ project, index }: ProjectCardProps) {
+export default function ProjectCard({ project, index }: Readonly<ProjectCardProps>) {
   const { t, language } = useLanguage();
   return (
     <motion.div

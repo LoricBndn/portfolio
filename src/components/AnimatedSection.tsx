@@ -8,7 +8,7 @@ interface AnimatedSectionProps {
   delay?: number;
 }
 
-export default function AnimatedSection({ children, delay = 0 }: AnimatedSectionProps) {
+export default function AnimatedSection({ children, delay = 0 }: Readonly<AnimatedSectionProps>) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}

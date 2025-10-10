@@ -34,7 +34,12 @@ export default function ContactPage() {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) throw new Error("Erreur lors de l'envoi");
+      if (!res.ok) {
+        const errorText = await res.text();
+        throw new Error(
+          `Erreur HTTP ${res.status}: ${errorText || "Erreur lors de l'envoi"}`
+        );
+      }
 
       toast({
         title: t("contact.success"),
@@ -43,9 +48,14 @@ export default function ContactPage() {
 
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
+      // 🔹 Journalisation de l’erreur pour debug
+      console.error("Erreur lors de l'envoi du message :", error);
+
+      // 🔹 Message utilisateur
       toast({
         title: "Erreur",
-        description: "Impossible d'envoyer le message. Réessaie plus tard.",
+        description:
+          "Impossible d'envoyer le message. Réessaie plus tard.",
         variant: "destructive",
       });
     } finally {

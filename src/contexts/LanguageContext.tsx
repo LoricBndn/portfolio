@@ -6,6 +6,7 @@ import {
   useState,
   ReactNode,
   useEffect,
+  useMemo,
 } from "react";
 
 type Language = "fr" | "en";
@@ -20,7 +21,9 @@ const LanguageContext = createContext<LanguageContextType | undefined>(
   undefined
 );
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
+export function LanguageProvider({
+  children,
+}: Readonly<{ children: ReactNode }>) {
   const [language, setLanguage] = useState<Language>("fr");
 
   useEffect(() => {
@@ -39,10 +42,17 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     return translations[language]?.[key] || key;
   };
 
+  const value = useMemo(
+    () => ({
+      language,
+      setLanguage: changeLanguage,
+      t,
+    }),
+    [language]
+  );
+
   return (
-    <LanguageContext.Provider
-      value={{ language, setLanguage: changeLanguage, t }}
-    >
+    <LanguageContext.Provider value={value}>
       {children}
     </LanguageContext.Provider>
   );
@@ -159,7 +169,8 @@ const translations: Record<Language, Record<string, string>> = {
     "home.performanceDesc": "Fast and optimized web applications",
 
     "projects.title": "My Projects",
-    "projects.subtitle": "Discover a selection of my web & mobile development work",
+    "projects.subtitle":
+      "Discover a selection of my web & mobile development work",
     "projects.github": "GitHub",
     "projects.demo": "Demo",
 
