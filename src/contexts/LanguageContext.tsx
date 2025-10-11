@@ -91,8 +91,16 @@ const translations: Record<Language, Record<string, string>> = {
     "projects.title": "Mes Projets",
     "projects.subtitle":
       "Découvrez une sélection de mes réalisations en développement web & mobile",
+    "projects.filter.type": "Type de projet",
+    "projects.filter.language": "Langages / Technologies",
+    "projects.filter.selectLanguages": "Tous",
+    "projects.type.all": "Tous",
+    "projects.type.web": "Web",
+    "projects.type.mobile": "Mobile",
+    "projects.type.game": "Jeu vidéo",
     "projects.github": "GitHub",
     "projects.demo": "Démo",
+    "projects.list": "Aucun projet trouvé avec ces filtres",
 
     "skills.title": "Compétences",
     "skills.subtitle": "Technologies et outils que je maîtrise",
@@ -171,8 +179,16 @@ const translations: Record<Language, Record<string, string>> = {
     "projects.title": "My Projects",
     "projects.subtitle":
       "Discover a selection of my web & mobile development work",
+    "projects.filter.type": "Project type",
+    "projects.filter.language": "Languages / Technologies",
+    "projects.filter.selectLanguages": "All",
+    "projects.type.all": "All",
+    "projects.type.web": "Web",
+    "projects.type.mobile": "Mobile",
+    "projects.type.game": "Video Game",
     "projects.github": "GitHub",
     "projects.demo": "Demo",
+    "projects.list": "No projects found with these filters",
 
     "skills.title": "Skills",
     "skills.subtitle": "Technologies and tools I master",

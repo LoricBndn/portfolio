@@ -1,12 +1,6 @@
-"use client";
-
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
-import Link from "next/link";
 import { Project } from "@/data/projects";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ProjectCardProps {
@@ -15,52 +9,72 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index }: Readonly<ProjectCardProps>) {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
+
+  let categoryClass = "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300"; // valeur par défaut
+  if (project.category?.[language] === "web") {
+    categoryClass = "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300";
+  } else if (project.category?.[language] === "mobile") {
+    categoryClass = "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300";
+  }
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="bg-white dark:bg-neutral-900 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300"
     >
-      <Card className="overflow-hidden hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
-        <div className="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center text-white text-2xl font-bold">
-            {project.title[language]}
-          </div>
-        </div>
+      {/* 🖼️ Image du projet */}
+      <div className="relative w-full h-52">
+        <Image
+          src={project.image}
+          alt={project.title[language]}
+          fill
+          className="object-cover"
+        />
+      </div>
 
-        <div className="p-6 flex-1 flex flex-col">
-          <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+      <div className="p-6 flex flex-col gap-3">
+        {/* 🔹 Titre + catégorie */}
+        <div className="flex justify-between items-center">
+          <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">
             {project.title[language]}
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-4 flex-1">
-            {project.description[language]}
-          </p>
 
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
-                {tag}
-              </Badge>
-            ))}
-          </div>
-
-          <div className="flex gap-3">
-            <Button asChild variant="default" className="flex-1">
-              <Link href={project.github} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-4 w-4" />
-                {t("projects.github")}
-              </Link>
-            </Button>
-            <Button asChild variant="outline" className="flex-1">
-              <Link href={project.demo} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                {t("projects.demo")}
-              </Link>
-            </Button>
-          </div>
+          {/* 🏷️ Catégorie visible sur la carte */}
+          <span
+            className={`px-3 py-1 text-sm rounded-full capitalize font-medium ${categoryClass}`}
+          >
+            {project.category[language]}
+          </span>
         </div>
-      </Card>
+
+        {/* 🧾 Description */}
+        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+          {project.description.fr}
+        </p>
+
+        {/* 💻 Langages et technologies */}
+        <div className="flex flex-wrap gap-3 mt-3">
+          {project.languages?.map((lang) => (
+            <div
+              key={lang.name}
+              className="flex items-center gap-2 bg-gray-50 dark:bg-neutral-800 px-2 py-1 rounded-md"
+              title={lang.name}
+            >
+              <Image
+                src={lang.icon}
+                alt={lang.name}
+                width={20}
+                height={20}
+                className="object-contain"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
     </motion.div>
   );
 }
