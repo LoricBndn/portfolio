@@ -23,7 +23,7 @@ export async function POST(req: Request) {
     // Contenu du mail
     const mailOptions = {
       from: `"Portfolio – ${name}" <${process.env.SMTP_USER}>`,
-      to: process.env.MAIL_TO || "contact@loricbondon.fr",
+      to: process.env.MAIL_TO || "contact@loricbondon.dev",
       subject: `Nouveau message depuis le portfolio`,
       text: `
 Nom : ${name}

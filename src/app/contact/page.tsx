@@ -153,7 +153,7 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <motion.div whileHover={{ x: 5 }}>
                   <Link
-                    href="mailto:contact@loricbondon.fr"
+                    href="mailto:contact@loricbondon.dev"
                     className="flex items-center gap-4 p-4 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-xl transition-shadow"
                   >
                     <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl">
@@ -164,7 +164,7 @@ export default function ContactPage() {
                         Email
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 text-sm">
-                        contact@loricbondon.fr
+                        contact@loricbondon.dev
                       </p>
                     </div>
                   </Link>

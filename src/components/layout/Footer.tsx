@@ -33,7 +33,7 @@ export default function Footer() {
               <Linkedin className="h-5 w-5" />
             </Link>
             <Link
-              href="mailto:contact@loricbondon.fr"
+              href="mailto:contact@loricbondon.dev"
               className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
             >
               <Mail className="h-5 w-5" />

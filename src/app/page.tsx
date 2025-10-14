@@ -64,7 +64,7 @@ export default function Home() {
                 <Linkedin className="h-6 w-6" />
               </Link>
               <Link
-                href="mailto:contact@loricbondon.fr"
+                href="mailto:contact@loricbondon.dev"
                 className="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-colors"
               >
                 <Mail className="h-6 w-6" />
